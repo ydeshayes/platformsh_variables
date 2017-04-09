@@ -1,0 +1,20 @@
+{
+  "name": "platformsh_variables",
+  "version": "1.0.1",
+  "description": "",
+  "main": "lib/mock.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "platform-var": "./createJson.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^2.0.1",
+    "jsonfile": "^2.4.0",
+    "ncp": "^2.0.0",
+    "webpack": "^2.3.3"
+  }
+}
