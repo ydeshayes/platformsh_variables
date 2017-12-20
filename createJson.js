@@ -16,7 +16,13 @@ ncp(buildFolder, 'build_platform', function (err) {
   console.log('done!');
 
   const base64RouteConfig = process.env.PLATFORM_ROUTES;
-  const routesConfig = JSON.parse(Buffer.from(base64RouteConfig, 'base64').toString('ascii'));
+  let routesConfig = 'test';
+
+  try {
+    routesConfig = JSON.parse(Buffer.from(base64RouteConfig, 'base64').toString('ascii'));
+  }catch(err) {
+
+  }
 
   if (!fs.existsSync(tmpfolder)){
     fs.mkdirSync(tmpfolder);
