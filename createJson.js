@@ -44,9 +44,16 @@ ncp(buildFolder, 'build_platform', function (err) {
 
       const data = fs.readFileSync(`build_platform/index.html`, 'utf-8');
 
-      const newValue = data.replace(/<script/, `<script type="text/javascript" src="/${javascriptFile}"></script><script`);
+      let newValue;
 
-      fs.writeFileSync(`build_platform/index.html`, newValue, 'utf-8');
+      if(data.indexOf('{{platform-var-script}}') !== -1) {
+        console.log('template string detected');
+        newValue = data.replace('{{platform-var-script}}', `<script type="text/javascript" src="./${javascriptFile}"></script>`);
+      } else {
+        newValue = data.replace(/<script/, `<script type="text/javascript" src="/${javascriptFile}"></script><script`);
+      }
+
+      fs.writeFileSync(`${prodfolder}/index.html`, newValue, 'utf-8');
 
       console.log('Index.html updated');
     });
