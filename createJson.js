@@ -7,9 +7,10 @@ const ncp = require('ncp').ncp;
 var appRoot = require('app-root-path');
 
 const buildFolder = process.argv[2] || 'build';
-const tmpfolder = process.argv[3] || '.tmp_platformsh';
+const tmpfolder = '.tmp_platformsh';
+const prodfolder = process.argv[3] || 'build_platform';
 
-ncp(buildFolder, 'build_platform', function (err) {
+ncp(buildFolder, prodfolder, function (err) {
   if (err) {
     return console.error(err);
   }
@@ -30,7 +31,7 @@ ncp(buildFolder, 'build_platform', function (err) {
 
   jsonfile.writeFileSync(`${tmpfolder}/routes.json`, routesConfig);
 
-  const webpackConfig = webpackConfigCreator(appRoot.toString(), 'build_platform');
+  const webpackConfig = webpackConfigCreator(appRoot.toString(), prodfolder);
 
   webpack(
     webpackConfig, (err, stats) => {
@@ -42,7 +43,7 @@ ncp(buildFolder, 'build_platform', function (err) {
       console.log('GENERATED')
       const javascriptFile = stats.toJson().chunks[0].files[0];
 
-      const data = fs.readFileSync(`build_platform/index.html`, 'utf-8');
+      const data = fs.readFileSync(`${prodfolder}/index.html`, 'utf-8');
 
       let newValue;
 

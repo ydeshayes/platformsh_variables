@@ -1,6 +1,6 @@
 {
   "name": "platformsh_variables",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "",
   "main": "lib/mock.js",
   "scripts": {
