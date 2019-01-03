@@ -1,6 +1,6 @@
 # platformsh_variables
 
-This module will give you access to the `PLATFORM_ROUTES` environement variable in your front app.
+This module will give you access to the `PLATFORM_ROUTES` environment variable in your front app.
 
 If you are using `create-react-app-platformsh` >= 1.3.4, this is already built-in.
 
